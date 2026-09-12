@@ -1,6 +1,5 @@
 import { use } from "react"
 import type { TecType } from "./type"
-import './card.css'
 export interface TechnoProps {
     technologiesPromise: Promise<TecType[]>
 }
@@ -54,6 +53,12 @@ export default function Techno({ technologiesPromise }: TechnoProps) {
                   <p className="mt-2 text-sm leading-relaxed text-slate-500">
                     {tech.description}
                   </p>
+                  <div className='mt-4 text-sm flex justify-between leading-relaxed text-slate-500'>
+        <span> {`${tech.category}`}</span>
+        <span> {`${tech.difficulty}`}</span>
+        <span> {`${tech.rating}`}</span>
+        
+      </div>
                 </div>
 
                 {/* Action Button */}
