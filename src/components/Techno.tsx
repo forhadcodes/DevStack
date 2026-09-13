@@ -50,21 +50,21 @@ export default function Techno({ technologiesPromise }: TechnoProps) {
         {/* LEFT SIDE */}
         <div className="lg:col-span-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {techno.map((tech: TecType, index: number) => {
-              const isAdded = stack.some(
-                (item) => item.techName === tech.techName
-              );
+            
+            {techno.map((tech: TecType) => {
+                  const isAdded = stack.some((item) => item.techName === tech.techName
+  );
 
-              return (
-                <Card
-                  key={index}
-                  tech={tech}
-                  isAdded={isAdded}
-                  onAdd={handleAddToStack}
-                />
-              );
-            })}
-          </div>
+  return (
+    <Card
+      key={tech.id}
+      tech={tech}
+      isAdded={isAdded}
+      onAdd={handleAddToStack}
+    />
+  );
+})}          
+</div>
         </div>
 
         {/* RIGHT SIDE */}
