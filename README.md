@@ -72,3 +72,64 @@ dev-stack-builder/
 │   └── main.tsx               # Entry point with Toastify CSS imports
 ├── package.json
 └── README.md
+
+i.  What is JSX, and why is it used in React?
+Ans: JSX (Javascript XML) is a syntax of writing html code in side Javascript.
+Because, React (JSX) code clean and easy otherhand without JSX in react UI design very tuff and hard.
+
+ii.  What is the difference between props and state?
+Ans: (1). Props come from the outer (parent) component, whereas State is created inside the component itself.
+     (2). Props cannot be changed (they are read-only), whereas State can be changed through clicks or user actions.
+     (3). Props are used to pass data between components, whereas State is used to manage dynamic/changing data on the page.
+iii.  What does the useState hook do, and where did you use it in this project?
+Ans: The useState is a react built-in-tool thats gives component ots own memory. It allow a component to hold data that we can change over time users' action or dynamic values and autometically re renders the pages so the user observe the update information immediately. In my Techno.tsx component, useState used to manage the list of technologies added to the aside bar:
+const [stack, setStack] = useState<TecType[]>([]);
+stack
+setStack
+Add to Stack
+Remove
+iV. What does the useEffect hook do, and why did you need it to load the JSON data?
+Ans: The ussEffect hook is a built in react function that lets out component perform side effects. Side effects are operations that interact with the world outside of React's rendering flow—such as fetching data from an API/JSON file, manually modifying the DOM, or setting up timers.
+
+Needed to Load JSON Data:
+When our component renders, React focuses solely on calculating and displaying the UI. Fetching data over a network takes time (it is asynchronous).
+
+Here is why useEffect is required for fetching JSON:
+Prevents Infinite Loops.
+Runs at the Right Time.
+Controls Dependencies.
+
+v.  Why does every item in a .map() list need a unique key prop?
+  The key prop acts as a unique ID card for each item in a list.
+
+  It helps React identify exactly which item was added, removed, or changed.
+
+  Without unique keys, React gets confused and re-renders the entire list unnecessarily.
+
+  Using keys makes your web app much faster and more efficient.
+
+  It prevents UI bugs, like form inputs or checkboxes staying attached to the wrong item.
+
+  Always use a unique property from your data (like item.id) instead of the list index.
+
+  It ensures that when you delete or reorder items, only the correct item updates on screen.
+
+vi. What is conditional rendering? Show one place you used it (example: the empty stack message).
+Conditional rendering in React means displaying different UI elements or components based on specific conditions (like an if statement or a boolean check). If a condition is true, React renders one element; if false, it renders something else or nothing at all.
+
+Used in my Project-
+In my Stack.tsx sidebar component, conditional rendering is used to check if the stack array is empty (stack.length === 0).
+
+If empty: It displays the default "No items in stack" message.
+
+If items exist: It renders the list of selected tech items alongside the "Remove All" button.
+
+
+vii.  How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
+Ans:  Parent to Child (Passing Data Down)
+The parent component passes data down to a child component using props, just like passing arguments to a function.
+
+Child to Parent (Sending Data Back Up)
+A child component cannot send data directly upward. Instead, the parent passes down a callback function via props. When an event happens in the child (like a button click), the child calls that function and passes the data back up as an argument.
+
+Child (Card.tsx): Calls onAdd(data) inside its click event, sending the specific technology object back up to the parent.
