@@ -1,9 +1,12 @@
+import "react-toastify/dist/ReactToastify.css";
 import { Suspense } from "react";
 import Banner from "./components/Banner"
 import Footer from "./components/Footer"
 import Nav from "./components/Nav"
 import type { TecType } from "./components/type";
 import Techno from "./components/Techno";
+import {ToastContainer} from "react-toastify"; 
+
 
 function App() {
 
@@ -20,6 +23,8 @@ function App() {
    <Suspense fallback={<div>LOADING</div>}>
     <Techno technologiesPromise={technologiesPromise()}></Techno>
    </Suspense>
+   
+    <ToastContainer position="top-right" autoClose={3000} />
     
     <Footer></Footer>
     </>

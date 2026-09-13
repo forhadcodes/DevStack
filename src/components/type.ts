@@ -8,3 +8,9 @@ export interface TecType{
     difficulty: "Beginner-Friendly",
     badge: "Popular"
 }
+
+export interface StackProps {
+  stack: TecType[];
+  onRemove: (techName: string) => void;
+  onRemoveAll: () => void;
+}
