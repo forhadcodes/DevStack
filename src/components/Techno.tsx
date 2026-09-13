@@ -1,5 +1,5 @@
 import { use, useState } from "react";
-import { toast } from "react-toastify"; // 👈 toast ইমপোর্ট করা হয়েছে
+import { toast } from "react-toastify"; 
 import type { TecType } from "./type";
 import Card from "./Card";
 import Stack from "./Stack";
@@ -10,40 +10,27 @@ export interface TechnoProps {
 
 export default function Techno({ technologiesPromise }: TechnoProps) {
   const techno = use(technologiesPromise);
-
-  // Selected technologies
   const [stack, setStack] = useState<TecType[]>([]);
-
-  // Add technology
   const handleAddToStack = (technology: TecType) => {
-    const alreadyAdded = stack.some(
-      (item) => item.techName === technology.techName
-    );
-
-    // ⚠️ Duplicate Alert
-    if (alreadyAdded) {
+  const alreadyAdded = stack.some((item) => item.techName === technology.techName);
+      if (alreadyAdded) {
       toast.warn(`${technology.techName} is already in your stack! ⚠️`, {
         toastId: `duplicate-${technology.techName}`,
       });
       return;
     }
 
-    // ✅ Success Alert
     setStack((previousStack) => [...previousStack, technology]);
     toast.success(`${technology.techName} added to your stack! ✅`);
   };
 
-  // Remove single technology
   const handleRemoveFromStack = (techName: string) => {
     setStack((previousStack) =>
       previousStack.filter((item) => item.techName !== techName)
     );
   };
 
-  // Remove all
-  const handleRemoveAll = () => {
-    setStack([]);
-  };
+  const handleRemoveAll = () => {setStack([]);};
 
   return (
     <div className="min-h-screen bg-slate-50/50 py-12 px-4 sm:px-6 lg:px-8">
